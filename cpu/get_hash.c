@@ -26,7 +26,7 @@ int main (int argc, char* argv[])
   }
 
   for (int i = 0; i < 8; i++)
-    printf("%x", password_hash[i]);
+    printf("%08x", password_hash[i]);
   
   return 0;
 }

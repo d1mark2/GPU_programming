@@ -32,7 +32,7 @@ static const uint32_t K[64] = {
   0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2
 };
 
-void atouint (uint32_t* w, unsigned char* source, int len)
+void atouint (uint32_t* w, unsigned char* source)
 {
   for (int i = 0; i < 16; i++)
     w[i] = ((uint32_t)source[4*i] << 24) + ((uint32_t)source[4*i + 1] << 16) +
@@ -46,7 +46,7 @@ void sha_256 (unsigned char source[64], uint32_t result[8])
   uint32_t t1;
   uint32_t t2;
 
-  atouint(w, source, 64);
+  atouint(w, source);
   memcpy(state, H0, 32);
   memcpy(result, H0, 32);
 
@@ -65,4 +65,5 @@ void sha_256 (unsigned char source[64], uint32_t result[8])
 
   for (int i = 0; i < 8; i++)
     result[i] += state[i];
+
 }
