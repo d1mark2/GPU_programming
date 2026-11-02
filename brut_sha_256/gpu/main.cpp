@@ -34,7 +34,6 @@ int main(int argc, char* argv[])
     const char* alphabet = "abcdefghijklmnopqrstuvwxyz";
     uint32_t charset_len = 26;
     uint64_t batchSize = 1u << 24;          
-    uint64_t maxCandidates = ~0;     
     uint64_t offset = 0;
     bool found = false;
     uint32_t result_hash[8];
@@ -74,10 +73,11 @@ int main(int argc, char* argv[])
   
     for (int len_pass = 1; len_pass < 12; len_pass++)
     {
+        offset = 0;
         uint64_t max_elements = (uint64_t)pow(charset_len, len_pass);
         for (uint64_t index = 0; (index < max_elements) && !found; index += batchSize) 
         {
-            uint64_t thisBatch = std::min(batchSize, maxCandidates - offset);
+            uint64_t thisBatch = std::min(batchSize, max_elements - offset);
 
             MTL::CommandBuffer* cmdBuf = queue->commandBuffer();
             MTL::ComputeCommandEncoder* enc = cmdBuf->computeCommandEncoder();
