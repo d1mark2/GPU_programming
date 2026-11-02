@@ -5,7 +5,7 @@
 #include <math.h>
 #include <time.h>
 #include "sha_256.h"
-#define LEN_ABC 37
+#define LEN_ABC 26
 
 unsigned char abc[] = "abcdefghijklmnopqrstuvwxyz";
 uint32_t password_hash[8] = {0};
