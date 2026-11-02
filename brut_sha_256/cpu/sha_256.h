@@ -1,0 +1,1 @@
+void sha_256 (unsigned char source[64], uint32_t result[8]);
