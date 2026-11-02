@@ -1,7 +1,7 @@
 TARGET = det_gpu.out
 CXX = clang++
 CXXFLAGS = -std=c++17 -O2 -Wall -Wextra
-METAL_CPP_DIR = $(CURDIR)/../gpu
+METAL_CPP_DIR = $(CURDIR)/../
 INCLUDES = -I$(METAL_CPP_DIR)
 FRAMEWORKS = -framework Metal -framework Foundation -framework QuartzCore
 

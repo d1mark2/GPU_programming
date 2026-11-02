@@ -1,7 +1,7 @@
 TARGET = brut_sha_256.out
 CXX = clang++
 CXXFLAGS = -std=c++17 -Wall -Wextra -g
-METAL_CPP_DIR = $(CURDIR)/Metal
+METAL_CPP_DIR = $(CURDIR)/../../
 INCLUDES = -I$(METAL_CPP_DIR)
 FRAMEWORKS = -framework Metal -framework Foundation -framework QuartzCore
 SRCS = $(wildcard *.cpp)
