@@ -103,14 +103,16 @@ int main(int argc, char* argv[])
         if (found) 
         {
             auto end = std::chrono::steady_clock::now();
-            auto elapsed = end - start;
-            double elapsed_ms = (double)std::chrono::duration_cast<std::chrono::milliseconds>(elapsed).count();
 
+            auto elapsed_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count();
+            double elapsed_s = static_cast<double>(elapsed_ns) / 1e9;
+            
             uint64_t found_index = *(uint64_t*)found_buff->contents();
             char password[8];
             index_to_password(found_index, alphabet, charset_len, len_pass, password);
             printf("password: %s\n", password);
-            std::cout << "time: " << elapsed_ms/1000 << " s\n";
+            printf("time: %.9f s\n",  elapsed_s);
+
             pool->release();
             return 0;
         }
